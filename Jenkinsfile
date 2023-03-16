@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'node_1.4'
+      label 'tomcat-node'
     }
 
   }
