@@ -10,14 +10,14 @@ pipeline {
  stages { 
  
    stage('build code and push code to artifact repo ') { 
-     agent { label 'devops' } 
+     agent { label 'jenkinstester' } 
      steps { 
        sh "export PATH=$PATH:${env.MVN_HOME}/bin && mvn clean deploy" 
      } 
    } 
  
    stage('deployment on tomcat') { 
-     agent { label 'tomcat-deploy' } 
+     agent { label 'tomcattest' } 
      steps { 
        sh """ 
             wget --http-user=${jfrog_user} --http-password=${jfrog_pass} https://devops400.jfrog.io/artifactory/devops/com/mycompany/app/my-app-kingston/2.0/my-app-kingston-2.0.war
